@@ -1,4 +1,4 @@
-# vim-compile
+# vim_compile
 Scripts for compiling vim with huge features and all language interpreters, to
 provide the same feature set as what is available in the commonly used
 `vim-nox` build available on Debian distributions of Linux.
@@ -10,10 +10,10 @@ provide the same feature set as what is available in the commonly used
 Works for me on Debian Stretch (9) and Buster (10).
 
 ```
-git clone https://github.com/leighmcculloch/vim-compile \
+git clone https://github.com/leighmcculloch/vim_compile \
   && git clone https://github.com/vim/vim \
   && cd vim
-  && sudo ../vim-compile/install-debian.sh <install-path-prefix>
+  && sudo ../vim_compile/install-debian.sh <install-path-prefix>
 ```
 
 Where:
