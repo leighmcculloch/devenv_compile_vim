@@ -1,26 +1,31 @@
 # vim_compile
-Scripts for compiling vim with huge features and all language interpreters, to
-provide the same feature set as what is available in the commonly used
-`vim-nox` build available on Debian distributions of Linux.
+
+Docker image and Makefile for building vim from source on Debian Buster.
+
+The resulting build is relatively close to what you get with a `vim-nox`
+variant available on Debia Vim is built with huge features and all language
+interpreters, and so the build is similar to the `vim-nox` variant available in
+Debian distributions.
 
 ## Usage
 
-Works for me on Debian Stretch (9) and Buster (10).
+Grab the binaries from the GitHub Releases page.
+
+Extract it to your install prefix. You'll also need to set the `VIM`
+environment variable to point to the location of the `share/vim` folder within
+your install prefix, e.g. `/usr/local/share/vim`.
+
+## Building
 
 ```
-git clone https://github.com/leighmcculloch/vim_compile \
-  && git clone https://github.com/vim/vim \
-  && cd vim
-  && sudo ../vim_compile/install-deps.sh
-  && sudo ../vim_compile/install-vim.sh <install-path-prefix>
+make build
 ```
 
-Where:
+At the end of building a file `vim-*.tar.gz` will be present. It contains all
+the files that are written to the install prefix, e.g. `/usr/local/`. 
 
-- `<install-path-prefix>` = `/usr/local` or your custom path.
+## Releasing
 
-Known issues:
-
-- The only feature missing in the `--version` readout when compared to `vim-nox`
-is `farsi`. If you happen to know how to fix that please open an issue or pull
-request.
+```
+make release
+```
