@@ -11,7 +11,7 @@ vim-$(VIM_COMMIT).tar.gz:
 	docker rmi $(DOCKER_TAG)
 
 release: vim-$(VIM_COMMIT).tar.gz
-	@test "$(git status -s)" || (echo "A clean working directory is required to release." ; exit 1)
+	@test -z "$(git status -s)" || (echo "A clean working directory is required to release." ; exit 1)
 	git tag "$(RELEASE)"
 	git push origin "$(RELEASE)"
 	hub release create -a vim-*.tar.gz "$(RELEASE)"
