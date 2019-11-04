@@ -1,4 +1,4 @@
-VIM_COMMIT := b1ba9ab
+VIM_COMMIT := $(shell git ls-remote -q --exit-code https://github.com/vim/vim master | cut -c -7)
 REPO_COMMIT := $(shell git rev-parse --short HEAD)$(and $(shell git status -s),_dirty_$(shell date +%s))
 VERSION := $(VIM_COMMIT)_$(REPO_COMMIT)
 DOCKER_TAG := vim_compile_$(VERSION)
