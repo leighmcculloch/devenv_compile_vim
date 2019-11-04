@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  schedule:
+    - cron:  '0 12 * * *'
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: VIM Build
+      run: make
+    - name: VIM Upload Binary
+      run: make upload
+      env:
+        BINTRAY_API_KEY: ${{secrets.BINTRAY_API_KEY}}
