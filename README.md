@@ -9,7 +9,9 @@ Debian distributions.
 
 ## Usage
 
-Grab the binaries from the GitHub Releases page.
+Download the binary from bintray:
+
+https://dl.bintray.com/leighmcculloch/vim_compile/
 
 Extract it to your install prefix. You'll also need to set the `VIM`
 environment variable to point to the location of the `share/vim` folder within
@@ -29,9 +31,3 @@ make build
 
 At the end of building a file `vim-*.tar.gz` will be present. It contains all
 the files that are written to the install prefix, e.g. `/usr/local/`. 
-
-## Releasing
-
-```
-make release
-```
