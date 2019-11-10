@@ -1,4 +1,4 @@
-# vim_compile
+# devenv_compile_vim
 
 Docker image and Makefile for building vim from source on Debian Buster.
 
@@ -6,6 +6,8 @@ The resulting build is relatively close to what you get with a `vim-nox`
 variant available on Debia Vim is built with huge features and all language
 interpreters, and so the build is similar to the `vim-nox` variant available in
 Debian distributions.
+
+This is intended for use with `leighmcculloch/devenv`.
 
 ## Usage
 
