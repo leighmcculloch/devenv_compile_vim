@@ -12,8 +12,8 @@ vim-$(VIM_COMMIT).tar.gz:
 
 upload: vim-$(VIM_COMMIT).tar.gz
 	@test -z "$(git status -s)" || (echo "A clean working directory is required to upload." ; exit 1)
-	curl -uleighmcculloch:$(BINTRAY_API_KEY) 'https://api.bintray.com/content/leighmcculloch/vim_compile/vim/$(VERSION)/vim_$(VERSION).tar.gz' -T vim-$(VIM_COMMIT).tar.gz
-	curl -uleighmcculloch:$(BINTRAY_API_KEY) 'https://api.bintray.com/content/leighmcculloch/vim_compile/vim/$(VERSION)/publish' -X POST -d '{"discard":"false"}'
+	curl -uleighmcculloch:$(BINTRAY_API_KEY) 'https://api.bintray.com/content/leighmcculloch/devenv/vim/$(VERSION)/vim_$(VERSION).tar.gz' -T vim-$(VIM_COMMIT).tar.gz
+	curl -uleighmcculloch:$(BINTRAY_API_KEY) 'https://api.bintray.com/content/leighmcculloch/devenv/vim/$(VERSION)/publish' -X POST -d '{"discard":"false"}'
 
 clean:
 	rm vim-*.tar.gz
