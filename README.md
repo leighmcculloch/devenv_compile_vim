@@ -1,5 +1,8 @@
 # devenv_compile_vim
 
+[![Build](https://github.com/leighmcculloch/devenv_compile_vim/workflows/build/badge.svg)](https://github.com/leighmcculloch/devenv_compile_vim/actions)
+[![Release](https://img.shields.io/github/v/release/leighmcculloch/devenv_compile_vim.svg)](https://github.com/leighmcculloch/devenv_compile_vim/releases/latest)
+
 Docker image and Makefile for building vim from source on Debian Buster.
 
 The resulting build is relatively close to what you get with a `vim-nox`
