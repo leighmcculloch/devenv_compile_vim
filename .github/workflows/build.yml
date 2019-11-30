@@ -1,4 +1,4 @@
-name: CI
+name: build
 
 on:
   schedule:
@@ -12,9 +12,24 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
-    - name: VIM Build
-      run: make
-    - name: VIM Upload Binary
-      run: make upload
+    - run: make
+    - id: release
+      run: |
+        echo "::set-output name=filename::$(ls -1 vim-*.tar.gz)"
+        echo "::set-output name=date::$(date +%Y%m%d)"
+        echo "::set-output name=vimversion::$(ls -1 vim-*.tar.gz | grep -oE '[a-f0-9]{7}')"
+    - uses: actions/create-release@v1
+      id: create_release
       env:
-        BINTRAY_API_KEY: ${{secrets.BINTRAY_API_KEY}}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.release.outputs.vimversion }}-${{ steps.release.outputs.date }}
+        release_name: v${{ steps.release.outputs.vimversion }}-${{ steps.release.outputs.date }}
+    - uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ steps.release.outputs.filename }}
+        asset_name: ${{ steps.release.outputs.filename }}
+        asset_content_type: application/x-bzip2

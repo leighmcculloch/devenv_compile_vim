@@ -11,11 +11,15 @@ This is intended for use with `leighmcculloch/devenv`.
 
 ## Usage
 
-Download the binary from bintray:
+Build the binaries with make. At the end of building a file `vim-*.tar.gz` will
+be present. It contains all the files that are written to the install prefix,
+e.g. `/usr/local/`.
 
-https://dl.bintray.com/leighmcculloch/vim_compile/
+```
+make
+```
 
-Extract it to your install prefix. You'll also need to set the `VIM`
+Extract the binary to your install prefix. You'll also need to set the `VIM`
 environment variable to point to the location of the `share/vim` folder within
 your install prefix, e.g. `/usr/local/share/vim`.
 
@@ -24,12 +28,3 @@ You may also need to install library dependencies of vim-nox. To grab them:
 ```
 sudo apt-get install $(apt-cache depends vim-nox | awk '/Depends: lib/{print$2}')
 ```
-
-## Building
-
-```
-make build
-```
-
-At the end of building a file `vim-*.tar.gz` will be present. It contains all
-the files that are written to the install prefix, e.g. `/usr/local/`. 
